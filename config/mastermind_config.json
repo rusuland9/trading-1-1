@@ -1,0 +1,168 @@
+{
+  "system": {
+    "maxThreads": 8,
+    "enablePaperTrading": true,
+    "autoStart": false,
+    "heartbeatInterval": 30,
+    "reconnectInterval": 60,
+    "maxReconnectAttempts": 5,
+    "enableWebInterface": false,
+    "webPort": 8080
+  },
+  "globalRiskParameters": {
+    "dailyRiskPercent": 0.02,
+    "maxDrawdownPercent": 0.05,
+    "consecutiveLossLimit": 2,
+    "capitalUtilization": 1.0,
+    "ordersPerCounter": 10,
+    "minLotSize": 0.01,
+    "paperTradingMode": true
+  },
+  "patternDetection": {
+    "setup1Enabled": true,
+    "setup2Enabled": true,
+    "minConfidence": 0.7,
+    "partialBrickThreshold": 0.75,
+    "tickBuffer": 2,
+    "riskRewardRatio": 2.0,
+    "maxPatternsPerSymbol": 3,
+    "patternTimeout": 1800
+  },
+  "symbols": [
+    {
+      "symbol": "EURUSD",
+      "capitalAllocation": 2000.0,
+      "brickSize": 0.0010,
+      "enabled": true,
+      "assetClass": "FOREX",
+      "riskParameters": {
+        "dailyRiskPercent": 0.02,
+        "maxDrawdownPercent": 0.05,
+        "consecutiveLossLimit": 2,
+        "capitalUtilization": 1.0,
+        "ordersPerCounter": 10,
+        "minLotSize": 0.01,
+        "paperTradingMode": true
+      },
+      "tradingSession": {
+        "start": "08:00",
+        "end": "17:00"
+      }
+    },
+    {
+      "symbol": "BTCUSD",
+      "capitalAllocation": 3000.0,
+      "brickSize": 50.0,
+      "enabled": true,
+      "assetClass": "CRYPTO",
+      "riskParameters": {
+        "dailyRiskPercent": 0.02,
+        "maxDrawdownPercent": 0.05,
+        "consecutiveLossLimit": 2,
+        "capitalUtilization": 1.0,
+        "ordersPerCounter": 10,
+        "minLotSize": 0.001,
+        "paperTradingMode": true
+      },
+      "tradingSession": {
+        "start": "00:00",
+        "end": "23:59"
+      }
+    },
+    {
+      "symbol": "ETHUSD",
+      "capitalAllocation": 2500.0,
+      "brickSize": 5.0,
+      "enabled": true,
+      "assetClass": "CRYPTO",
+      "riskParameters": {
+        "dailyRiskPercent": 0.02,
+        "maxDrawdownPercent": 0.05,
+        "consecutiveLossLimit": 2,
+        "capitalUtilization": 1.0,
+        "ordersPerCounter": 10,
+        "minLotSize": 0.001,
+        "paperTradingMode": true
+      },
+      "tradingSession": {
+        "start": "00:00",
+        "end": "23:59"
+      }
+    }
+  ],
+  "exchanges": [
+    {
+      "exchange": "BINANCE",
+      "enabled": false,
+      "testnet": true,
+      "apiKey": "your_binance_api_key_here",
+      "apiSecret": "your_binance_api_secret_here",
+      "baseUrl": "https://testnet.binance.vision",
+      "maxOrderSize": 1000000,
+      "minOrderSize": 0.001,
+      "rateLimitRequests": 1200,
+      "rateLimitWindow": 60
+    },
+    {
+      "exchange": "DERIBIT",
+      "enabled": false,
+      "testnet": true,
+      "apiKey": "your_deribit_api_key_here",
+      "apiSecret": "your_deribit_api_secret_here",
+      "baseUrl": "https://test.deribit.com",
+      "maxOrderSize": 1000000,
+      "minOrderSize": 1,
+      "rateLimitRequests": 20,
+      "rateLimitWindow": 1
+    },
+    {
+      "exchange": "COINBASE",
+      "enabled": false,
+      "testnet": true,
+      "apiKey": "your_coinbase_api_key_here",
+      "apiSecret": "your_coinbase_api_secret_here",
+      "passphrase": "your_coinbase_passphrase_here",
+      "baseUrl": "https://api-public.sandbox.pro.coinbase.com",
+      "maxOrderSize": 1000000,
+      "minOrderSize": 0.01,
+      "rateLimitRequests": 10,
+      "rateLimitWindow": 1
+    },
+    {
+      "exchange": "MT4",
+      "enabled": false,
+      "testnet": false,
+      "apiKey": "",
+      "apiSecret": "",
+      "baseUrl": "localhost:8222",
+      "maxOrderSize": 100,
+      "minOrderSize": 0.01,
+      "rateLimitRequests": 100,
+      "rateLimitWindow": 60
+    }
+  ],
+  "logging": {
+    "logLevel": "INFO",
+    "logFile": "logs/mastermind.log",
+    "enableConsoleLog": true,
+    "enableFileLog": true,
+    "enableAuditTrail": true,
+    "maxLogFileSize": 100,
+    "maxLogFiles": 10,
+    "logMarketData": false,
+    "logOrderDetails": true,
+    "logRiskEvents": true
+  },
+  "database": {
+    "type": "SQLite",
+    "connectionString": "database/mastermind.db",
+    "enableBackup": true,
+    "backupInterval": 24,
+    "enableEncryption": false,
+    "encryptionKey": ""
+  },
+  "globalTradingSession": {
+    "start": "00:00",
+    "end": "23:59"
+  }
+} 
