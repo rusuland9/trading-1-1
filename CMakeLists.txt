@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Qt 6.8.3 Configuration
 set(CMAKE_PREFIX_PATH "C:/Qt/6.8.3/msvc2022_64")
-find_package(Qt6 REQUIRED COMPONENTS Core Widgets Charts Network WebSockets Sql)
+find_package(Qt6 REQUIRED COMPONENTS Core Widgets Charts Network WebSockets Sql Test)
 
 # Enable Qt MOC, UIC, and RCC
 set(CMAKE_AUTOMOC ON)
@@ -30,100 +30,87 @@ find_package(OpenSSL REQUIRED)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/third_party)
 
-# Core Source files (existing backend)
+# Core Source files (only existing files)
 set(CORE_SOURCES
     src/core/TradingEngine.cpp
-    src/core/RenkoChart.cpp
-    src/core/PatternDetector.cpp
-    src/core/OrderManager.cpp
-    src/core/RiskManager.cpp
-    src/core/PositionCalculator.cpp
     src/core/ConfigManager.cpp
-    src/core/Logger.cpp
-    src/core/DatabaseManager.cpp
+    src/core/OrderManager.cpp
 )
 
-# API Sources (existing)
-set(API_SOURCES
-    src/api/ExchangeAPI.cpp
-    src/api/BinanceAPI.cpp
-    src/api/DeribitAPI.cpp
-    src/api/CoinbaseAPI.cpp
-    src/api/MT4Bridge.cpp
-    src/api/MT5Bridge.cpp
-    src/api/WebSocketClient.cpp
-    src/api/RestClient.cpp
-)
+# Add other core files if they exist
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/core/RenkoChart.cpp")
+    list(APPEND CORE_SOURCES src/core/RenkoChart.cpp)
+endif()
 
-# Strategy Sources (existing)
-set(STRATEGY_SOURCES
-    src/strategy/MasterMindStrategy.cpp
-    src/strategy/SignalGenerator.cpp
-    src/strategy/EntryLogic.cpp
-    src/strategy/ExitLogic.cpp
-)
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/core/PatternDetector.cpp")
+    list(APPEND CORE_SOURCES src/core/PatternDetector.cpp)
+endif()
 
-# Utility Sources (existing)
-set(UTILS_SOURCES
-    src/utils/TimeUtils.cpp
-    src/utils/MathUtils.cpp
-    src/utils/StringUtils.cpp
-    src/utils/JsonParser.cpp
-)
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/core/RiskManager.cpp")
+    list(APPEND CORE_SOURCES src/core/RiskManager.cpp)
+endif()
 
-# NEW: Qt UI Sources
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/core/Logger.cpp")
+    list(APPEND CORE_SOURCES src/core/Logger.cpp)
+endif()
+
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/core/DatabaseManager.cpp")
+    list(APPEND CORE_SOURCES src/core/DatabaseManager.cpp)
+endif()
+
+# UI Sources (only existing files)
 set(UI_SOURCES
     src/ui/MainWindow.cpp
-    src/ui/TradingDashboard.cpp
-    src/ui/RenkoChartWidget.cpp
-    src/ui/OrderManagementWidget.cpp
-    src/ui/RiskManagementWidget.cpp
-    src/ui/PositionWidget.cpp
-    src/ui/ConfigurationWidget.cpp
-    src/ui/LogWidget.cpp
-    src/ui/MarketDataWidget.cpp
-    src/ui/PatternDetectionWidget.cpp
-    src/ui/PerformanceWidget.cpp
-    src/ui/ExchangeStatusWidget.cpp
 )
 
-# NEW: Qt UI Headers (will be processed by MOC)
-set(UI_HEADERS
-    include/ui/MainWindow.h
-    include/ui/TradingDashboard.h
-    include/ui/RenkoChartWidget.h
-    include/ui/OrderManagementWidget.h
-    include/ui/RiskManagementWidget.h
-    include/ui/PositionWidget.h
-    include/ui/ConfigurationWidget.h
-    include/ui/LogWidget.h
-    include/ui/MarketDataWidget.h
-    include/ui/PatternDetectionWidget.h
-    include/ui/PerformanceWidget.h
-    include/ui/ExchangeStatusWidget.h
-)
+# Add other UI files if they exist
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/ui/TradingDashboard.cpp")
+    list(APPEND UI_SOURCES src/ui/TradingDashboard.cpp)
+endif()
 
-# NEW: Qt UI Forms
-set(UI_FORMS
-    src/ui/forms/MainWindow.ui
-    src/ui/forms/TradingDashboard.ui
-    src/ui/forms/ConfigurationWidget.ui
-    src/ui/forms/OrderManagementWidget.ui
-    src/ui/forms/RiskManagementWidget.ui
-)
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/ui/RenkoChartWidget.cpp")
+    list(APPEND UI_SOURCES src/ui/RenkoChartWidget.cpp)
+endif()
 
-# NEW: Qt Resources
-set(UI_RESOURCES
-    resources/icons.qrc
-    resources/styles.qrc
-)
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/ui/OrderManagementWidget.cpp")
+    list(APPEND UI_SOURCES src/ui/OrderManagementWidget.cpp)
+endif()
 
-# Create main core library (existing backend)
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/ui/RiskManagementWidget.cpp")
+    list(APPEND UI_SOURCES src/ui/RiskManagementWidget.cpp)
+endif()
+
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/ui/PositionWidget.cpp")
+    list(APPEND UI_SOURCES src/ui/PositionWidget.cpp)
+endif()
+
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/ui/ConfigurationWidget.cpp")
+    list(APPEND UI_SOURCES src/ui/ConfigurationWidget.cpp)
+endif()
+
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/ui/LogWidget.cpp")
+    list(APPEND UI_SOURCES src/ui/LogWidget.cpp)
+endif()
+
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/ui/MarketDataWidget.cpp")
+    list(APPEND UI_SOURCES src/ui/MarketDataWidget.cpp)
+endif()
+
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/ui/PatternDetectionWidget.cpp")
+    list(APPEND UI_SOURCES src/ui/PatternDetectionWidget.cpp)
+endif()
+
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/ui/PerformanceWidget.cpp")
+    list(APPEND UI_SOURCES src/ui/PerformanceWidget.cpp)
+endif()
+
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/ui/ExchangeStatusWidget.cpp")
+    list(APPEND UI_SOURCES src/ui/ExchangeStatusWidget.cpp)
+endif()
+
+# Create main core library
 add_library(MasterMindCore STATIC
     ${CORE_SOURCES}
-    ${API_SOURCES}
-    ${STRATEGY_SOURCES}
-    ${UTILS_SOURCES}
 )
 
 # Link core library dependencies
@@ -136,9 +123,6 @@ target_link_libraries(MasterMindCore
 # Create Qt UI library
 add_library(MasterMindUI STATIC
     ${UI_SOURCES}
-    ${UI_HEADERS}
-    ${UI_FORMS}
-    ${UI_RESOURCES}
 )
 
 # Link Qt UI library dependencies
@@ -168,31 +152,26 @@ target_link_libraries(MasterMindTraderGUI
     Qt6::Sql
 )
 
-# Console executable (existing)
+# Console executable
 add_executable(MasterMindTrader
     src/main.cpp
 )
 
 target_link_libraries(MasterMindTrader MasterMindCore)
 
-# Testing executable
+# Test executable
 add_executable(MasterMindTest
-    tests/test_main.cpp
     tests/test_renko.cpp
-    tests/test_risk_manager.cpp
-    tests/test_pattern_detector.cpp
-    tests/test_ui.cpp
 )
 
-target_link_libraries(MasterMindTest 
+target_link_libraries(MasterMindTest
     MasterMindCore
-    MasterMindUI
     Qt6::Test
+    Qt6::Core
 )
 
-# Qt deployment
+# Qt deployment for Windows
 if(WIN32)
-    # Add Qt deployment for Windows
     find_program(QT_DEPLOYQT_EXECUTABLE windeployqt HINTS ${Qt6_DIR}/../../../bin)
     if(QT_DEPLOYQT_EXECUTABLE)
         add_custom_command(TARGET MasterMindTraderGUI POST_BUILD
@@ -203,21 +182,6 @@ if(WIN32)
 endif()
 
 # Installation
-install(TARGETS MasterMindTraderGUI MasterMindTrader DESTINATION bin)
+install(TARGETS MasterMindTraderGUI MasterMindTrader MasterMindTest DESTINATION bin)
 install(DIRECTORY config/ DESTINATION config)
-install(DIRECTORY resources/ DESTINATION resources)
-install(FILES README.md DESTINATION .)
-
-# Copy Qt libraries for development
-if(WIN32 AND CMAKE_BUILD_TYPE STREQUAL "Debug")
-    add_custom_command(TARGET MasterMindTraderGUI POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${Qt6_DIR}/../../../bin/Qt6Cored.dll"
-        "${Qt6_DIR}/../../../bin/Qt6Widgetsd.dll"
-        "${Qt6_DIR}/../../../bin/Qt6Chartsd.dll"
-        "${Qt6_DIR}/../../../bin/Qt6Networkd.dll"
-        "${Qt6_DIR}/../../../bin/Qt6WebSocketsd.dll"
-        "${Qt6_DIR}/../../../bin/Qt6Sqld.dll"
-        $<TARGET_FILE_DIR:MasterMindTraderGUI>
-    )
-endif() 
+install(FILES README.md DESTINATION .) 
