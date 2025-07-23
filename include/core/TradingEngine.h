@@ -2,6 +2,7 @@
 #define MASTERMIND_TRADING_ENGINE_H
 
 #include "Types.h"
+#include "api/ExchangeAPI.h"
 #include <memory>
 #include <thread>
 #include <atomic>
@@ -19,7 +20,6 @@ class RiskManager;
 class ConfigManager;
 class Logger;
 class DatabaseManager;
-class ExchangeAPI;
 
 /**
  * @brief Main trading engine that coordinates all components

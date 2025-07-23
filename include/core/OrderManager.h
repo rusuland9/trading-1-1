@@ -2,6 +2,7 @@
 #define MASTERMIND_ORDER_MANAGER_H
 
 #include "Types.h"
+#include "api/ExchangeAPI.h"
 #include <memory>
 #include <vector>
 #include <queue>
@@ -13,7 +14,6 @@
 namespace MasterMind {
 
 // Forward declarations
-class ExchangeAPI;
 class Logger;
 
 /**

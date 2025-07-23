@@ -4,7 +4,7 @@
 #include "core/OrderManager.h"
 #include "core/RiskManager.h"
 #include "core/ConfigManager.h"
-#include "core/Logger.h"
+#include "Logger.h"
 #include "core/DatabaseManager.h"
 #include <iostream>
 

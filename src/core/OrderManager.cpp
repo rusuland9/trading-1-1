@@ -1,4 +1,5 @@
 #include "core/OrderManager.h"
+#include "api/ExchangeAPI.h"
 #include <iostream>
 #include <sstream>
 #include <iomanip>
