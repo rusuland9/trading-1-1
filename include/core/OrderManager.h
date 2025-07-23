@@ -170,6 +170,7 @@ private:
     void orderProcessingWorker();
     void statusUpdateWorker();
     void processOrderQueue();
+    void processOrder(const Order& order);
     bool validateOrder(const Order& order) const;
     OrderId generateOrderId() const;
     

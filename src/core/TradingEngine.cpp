@@ -4,6 +4,8 @@
 #include "core/OrderManager.h"
 #include "core/RiskManager.h"
 #include "core/ConfigManager.h"
+#include "core/Logger.h"
+#include "core/DatabaseManager.h"
 #include <iostream>
 
 namespace MasterMind {
@@ -26,6 +28,17 @@ bool TradingEngine::initialize() {
         configManager_ = std::make_unique<ConfigManager>();
         if (!configManager_->loadConfiguration(configFilePath_)) {
             std::cerr << "Failed to load configuration from: " << configFilePath_ << std::endl;
+            return false;
+        }
+
+        // Initialize logger
+        logger_ = std::make_unique<Logger>();
+        
+        // Initialize database manager
+        database_ = std::make_unique<DatabaseManager>();
+        auto dbConfig = configManager_->getDatabaseConfig();
+        if (!database_->initialize(dbConfig.connectionString)) {
+            std::cerr << "Failed to initialize database" << std::endl;
             return false;
         }
 
