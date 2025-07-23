@@ -108,10 +108,10 @@ public:
 private:
     // Core components
     std::unique_ptr<ConfigManager> configManager_;
-    std::unique_ptr<Logger> logger_;
-    std::unique_ptr<DatabaseManager> database_;
-    std::unique_ptr<RiskManager> riskManager_;
     std::unique_ptr<OrderManager> orderManager_;
+    std::unique_ptr<RiskManager> riskManager_;
+    std::unique_ptr<DatabaseManager> databaseManager_;
+    // Removed logger_ member - using singleton instead
     
     // Pattern detection and charting
     std::unordered_map<Symbol, std::unique_ptr<RenkoChart>> renkoCharts_;

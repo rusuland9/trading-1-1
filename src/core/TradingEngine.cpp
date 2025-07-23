@@ -23,36 +23,36 @@ TradingEngine::~TradingEngine() {
 }
 
 bool TradingEngine::initialize() {
-    try {
-        // Initialize configuration manager
-        configManager_ = std::make_unique<ConfigManager>();
-        if (!configManager_->loadConfiguration(configFilePath_)) {
-            std::cerr << "Failed to load configuration from: " << configFilePath_ << std::endl;
-            return false;
-        }
-
-        // Initialize logger
-        logger_ = std::make_unique<Logger>();
-        
-        // Initialize database manager
-        database_ = std::make_unique<DatabaseManager>();
-        auto dbConfig = configManager_->getDatabaseConfig();
-        if (!database_->initialize(dbConfig.connectionString)) {
-            std::cerr << "Failed to initialize database" << std::endl;
-            return false;
-        }
-
-        // Initialize other components (stub implementations)
-        riskManager_ = std::make_unique<RiskManager>();
-        orderManager_ = std::make_unique<OrderManager>();
-        patternDetector_ = std::make_unique<PatternDetector>();
-
-        std::cout << "TradingEngine initialized successfully" << std::endl;
-        return true;
-    } catch (const std::exception& e) {
-        std::cerr << "Error initializing TradingEngine: " << e.what() << std::endl;
+    std::cout << "Initializing TradingEngine..." << std::endl;
+    
+    // Initialize logger (use singleton instance)
+    Logger::getInstance().info("TradingEngine initialization started", "Engine");
+    
+    // Load configuration
+    configManager_ = std::make_unique<ConfigManager>();
+    if (!configManager_->loadConfiguration(configFilePath_)) {
+        std::cerr << "Failed to load configuration: " << configFilePath_ << std::endl;
+        Logger::getInstance().error("Failed to load configuration: " + configFilePath_, "Engine");
         return false;
     }
+    
+    Logger::getInstance().info("Configuration loaded successfully", "Engine");
+
+    // Initialize database manager
+    database_ = std::make_unique<DatabaseManager>();
+    auto dbConfig = configManager_->getDatabaseConfig();
+    if (!database_->initialize(dbConfig.connectionString)) {
+        std::cerr << "Failed to initialize database" << std::endl;
+        return false;
+    }
+
+    // Initialize other components (stub implementations)
+    riskManager_ = std::make_unique<RiskManager>();
+    orderManager_ = std::make_unique<OrderManager>();
+    patternDetector_ = std::make_unique<PatternDetector>();
+
+    std::cout << "TradingEngine initialized successfully" << std::endl;
+    return true;
 }
 
 bool TradingEngine::start() {

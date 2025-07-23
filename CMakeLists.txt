@@ -24,12 +24,28 @@ endif()
 
 # Find required packages
 find_package(Threads REQUIRED)
-find_package(OpenSSL REQUIRED)
 
-# Try to find jsoncpp
+# Try to find OpenSSL (optional for now)
+find_package(OpenSSL QUIET)
+if(OPENSSL_FOUND)
+    message(STATUS "OpenSSL found - SSL features enabled")
+    add_definitions(-DSSL_ENABLED)
+else()
+    message(WARNING "OpenSSL not found - SSL features disabled")
+endif()
+
+# Try to find jsoncpp (optional)
 find_package(PkgConfig QUIET)
 if(PkgConfig_FOUND)
-    pkg_check_modules(JSONCPP jsoncpp)
+    pkg_check_modules(JSONCPP jsoncpp QUIET)
+    if(JSONCPP_FOUND)
+        message(STATUS "jsoncpp found - JSON features enabled")
+        add_definitions(-DJSON_ENABLED)
+    else()
+        message(WARNING "jsoncpp not found - using simple JSON parsing")
+    endif()
+else()
+    message(WARNING "PkgConfig not found - jsoncpp detection skipped")
 endif()
 
 # Include directories
@@ -108,17 +124,21 @@ add_library(MasterMindCore STATIC
 # Link core library dependencies
 target_link_libraries(MasterMindCore
     Threads::Threads
-    OpenSSL::SSL
-    OpenSSL::Crypto
 )
+
+# Link OpenSSL if available
+if(OPENSSL_FOUND)
+    target_link_libraries(MasterMindCore
+        OpenSSL::SSL
+        OpenSSL::Crypto
+    )
+endif()
 
 # Link jsoncpp if available
 if(JSONCPP_FOUND)
     target_link_libraries(MasterMindCore ${JSONCPP_LIBRARIES})
     target_include_directories(MasterMindCore PRIVATE ${JSONCPP_INCLUDE_DIRS})
     target_compile_options(MasterMindCore PRIVATE ${JSONCPP_CFLAGS_OTHER})
-else()
-    message(WARNING "jsoncpp not found. Some JSON functionality may not work correctly.")
 endif()
 
 # Create Qt UI library
