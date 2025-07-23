@@ -1,105 +1,150 @@
-Trading System Development
+Here is a comprehensive breakdown of all the functions that must be implemented for this C++ high-frequency trading system ("Master Mind"), based on your client's full requirement document. These functions are listed in a way that can be directly understood by AI coding tools like Cursor AI, categorized for clarity, and none of the requirements are skipped:
 
-1. Job Title:
+🔧 CORE ENGINE FUNCTIONALITY
+initialize_strategy(config)
+Load user-defined configurations (e.g. capital allocation, trading sessions, tick buffer).
 
-**C++ Developer Needed for High-Frequency Cross-Asset Trading System (Confidential Strategy)**
+Set up counters and risk management thresholds.
 
-2. Overview:
+start_trading_session()
+Start live or paper trading based on system status.
 
-We are seeking a **skilled and experienced C++ developer** to build a **confidential, cross-asset, high-frequency trading strategy** we refer to as **"Master Mind."** This strategy is designed for markets such as **Forex, Crypto, and F&O (ATM, ITM, OTM—excluding low liquidity strikes)**.
+Respect user-defined market timing (e.g., London or Tokyo session).
 
-**Your role will be to code the trading engine, integrate exchange APIs, and ensure full reliability across various brokers and platforms.Deliverables: Fully functional C++ codebase with API integrations, documentation, and a user guide for configuration.**
+shutdown_strategy()
+Safely terminate all running operations.
 
-**Important**: The entry/exit logic and proprietary rules of the strategy will NOT be disclosed publicly. Access to such logic will be provided under strict NDAs only after shortlisting.
+Cancel any pending orders, save audit logs, update counters.
 
----
+📈 RENKO BRICK DETECTION & SIGNALS
+generate_renko_chart(instrument_data)
+Construct Renko bricks using traditional method.
 
-3. Strategy Features (General, Non-Proprietary Description):
+Support user-defined brick size.
 
-* **Multi-Asset Compatibility**: Must support asset-specific capital allocation (e.g., \$2,000 to EURUSD, \$3,000 to BTCUSD, etc.).
-* **Renko-Based Execution**: Uses **Renko chart patterns** to trigger entries/exits.
-* **Position Sizing & Risk Management**: Fully dynamic risk-based position sizing. Logic must incorporate capital utilization, daily risk % limits, and automated halts after losses.
-* **Advanced Order Handling**: Stop orders, take profit, trailing SL logic, and tick-buffer conditions.
-* **Capital Efficiency**: Supports per-counter logic to reassess capital after batches of trades.
-* **Fallback to Paper Trading**: In case of consecutive losses, switches to paper trades to assess market conditions before resuming live trading.
+detect_entry_signal(bricks, setup_type)
+Setup 1: Detect two consecutive down bricks + 75% formed up brick.
 
----
+Setup 2: Detect patterns like Green-Red-Green, Red-Green-Red; identify breakout from high/low channel.
 
-4. Your Responsibilities:
+detect_exit_signal(bricks)
+Exit based on:
 
-* Develop the strategy engine in **C++** with modular and reusable code.
-* Build robust **API integrations** for:
-* Crypto exchanges mentioned below
-* Binance
-* Delta Exchange
-* Deribit
-* Coinbase etc.
-* MT4 & MT5 platforms (via bridge or direct plugin).
-* Implement a **margin calculator module** for each instrument selected.
-* Include all **risk management**, **order routing**, **execution filters**, and **real-time Renko chart pattern detection** (logic shared later).
-* Implement **counter-based capital assessment** logic.
-* Build a toggle for **live vs paper trading** fallback.
-* Ensure **timing flexibility** (e.g., market hours or user-defined trading windows).
-* Optimize for performance and minimal latency.
-* Provide future support for existing code **debugging and troubleshooting** (without extra cost).
-* Maintain **strict confidentiality** throughout development.
+Profit target.
 
-5. Ideal Candidate:
+Opposite signal formation.
 
-* 3+ years in **C++** development, preferably in trading system design.
-* Strong understanding of **market APIs**, **multi-threading**, **low-latency programming**, and **financial risk logic**.
-* Prior experience working with **crypto exchanges** and **MT4/MT5**.
-* Creative, reliable, and able to suggest optimizations.
-* Familiarity with **Renko charting** is a **plus**, but not mandatory.
-* **Available for support** and **willing to sign NDA**.
+Stop loss hit.
 
----
+💸 RISK MANAGEMENT & POSITION SIZING
+calculate_position_size(capital, risk_percent, stoploss_pips, pip_value)
+Formula-driven calculation of order size (e.g., >= 0.01 lots).
 
-6. Deliverables:
+should_continue_trading_after_loss(loss_count)
+If 2 consecutive losses: switch to paper trading mode.
 
-1. Well-documented **C++ codebase** with modular design.
-2. Compiled binaries or libraries (as needed).
-3. Integrated API bridges with the mentioned brokers.
-4. Configuration panel or JSON/YAML-based settings input (for symbol-specific capital apportionment, risk %, tick buffer, etc.).
-5. Complete ownership and IP rights for the client.
-6. Post-deployment bug fixes & improvements at **no additional cost**.
+should_continue_to_next_counter(current_equity, previous_gains_losses)
+Only allow next batch of 10 trades if equity improved.
 
----
+halt_trading_for_day()
+Stop trading when daily loss exceeds risk percentage.
 
-7. Confidentiality & Legal Notice:
+📤 ORDER MANAGEMENT SYSTEM (OMS)
+place_entry_order(order_type, price, instrument)
+Place Buy Stop/Sell Stop based on signal.
 
-The **core logic of this strategy is strictly proprietary**. Shortlisted candidates will be required to:
+Add 2-tick buffer above/below brick close.
 
-* Sign a **Non-Disclosure Agreement (NDA)** before any detailed access is granted.
-* Refrain from sharing any part of the code, idea, or implementation.
-* Not reuse any part of the project for personal or professional gain.
+cancel_order(order_id)
+Cancel orders if conditions no longer valid.
 
-Violations will result in **legal action**.
+move_stop_to_breakeven(entry_price, tick_buffer)
+After 2 favorable bricks, update SL to breakeven + 1–2 ticks to cover costs.
 
-8. Budget:
+place_hybrid_order(instrument, direction)
+In fast-moving markets (crypto/forex), if order not filled:
 
-We are looking for **cost-effective but high-quality work**. Please mention:
+Place hybrid of iceberg + pegged order.
 
-* Your **estimated cost**
-* **Timeline**
-* Relevant **experience or previous work samples** (especially with trading platforms)
+trailing_stoploss_manager(trade)
+Adjust SL dynamically based on Renko moves and buffer.
 
----
+🔄 API INTEGRATIONS
+connect_to_exchange(exchange_name, credentials)
+Support for Binance, Delta Exchange, Deribit, Coinbase.
 
-9. How to Apply:
+Also support MT4/MT5 via bridge or plugin.
 
-If you’re confident in your ability to develop a **modular, optimized, cross-platform trading system** in C++, kindly apply with the following:
+get_margin_requirements(instrument)
+Pull real-time margin data from broker APIs.
 
-1. Brief description of your experience.
-2. Example projects (especially algo trading-related).
-3. Confirmation of your ability to sign an NDA.
-4. Estimated time and cost.
-5. Mention “**Confidential Strategy Build**” in your proposal to confirm you've read the full brief.
+get_swap_charges(instrument)
+Retrieve swap charges per asset.
 
----
+execute_order_via_api(order_object)
+Actual placement, modification, or cancellation of orders.
 
-Do NOT Apply If:
+fetch_real_time_data(instrument)
+Stream market data with low latency (tick-level).
 
-* You plan to reuse the code elsewhere.
-* You are unable to work under strict confidentiality.
-* You are unfamiliar with C++ in performance-critical environments.
+🧠 STRATEGY MODES & LOGIC CONTROLS
+toggle_strategy_mode(mode)
+Toggle between:
+
+Live trading
+
+Paper trading
+
+Setup 1 / Setup 2 / Both
+
+check_trading_window(current_time)
+Confirm if current time falls in allowed trading session.
+
+🧾 AUDIT TRAIL / LOGGING MODULE
+log_event(event_type, timestamp, data)
+Strategy signal
+
+OMS action (rejected, modified orders)
+
+API call (request/response/error)
+
+Margin/PnL snapshot
+
+store_logs(database_type)
+Use SQLite or MongoDB.
+
+Must be write-protected and secure.
+
+🛠️ CONFIGURATION MODULE
+load_config_from_file(filepath)
+JSON/YAML-based config: instruments, capital per asset, risk %, tick buffer.
+
+update_config_live(params)
+Hot-reload configuration without restarting system.
+
+🔍 MONITORING / DIAGNOSTICS
+display_current_status_dashboard()
+Show live PnL, capital per counter, losses, gains, active orders.
+
+error_handling_and_recovery(error_code)
+Handle API or trading errors gracefully with retries or fallback.
+
+🔐 SECURITY & COMPLIANCE
+sign_NDA_and_lock_code_access()
+Enforce NDA agreement for proprietary access.
+
+Code must not be reused or leaked.
+
+✅ Key Notes for Cursor AI / Coding Environment:
+All strategies must be implemented in C++.
+
+Performance-critical: prioritize multithreading, low-latency I/O, and lock-free data structures.
+
+Audit logs must be timestamped, secure, and support offline retrieval.
+
+Risk logic, order placement, and Renko signals must be strictly isolated into modules for testing.
+
+No GUI needed unless specified; use config files and terminal logs for interaction.
+
+Would you like a directory and file structure plan, or should I begin scaffolding the full C++ class-based layout for the system?
+

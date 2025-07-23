@@ -1,10 +1,13 @@
 #ifndef MASTERMIND_EXCHANGE_API_H
 #define MASTERMIND_EXCHANGE_API_H
 
-#include "core/Types.h"
 #include <memory>
 #include <vector>
 #include <functional>
+#include <mutex>
+#include <atomic>
+#include <string>
+#include "core/Types.h"
 
 namespace MasterMind {
 

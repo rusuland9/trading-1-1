@@ -26,50 +26,45 @@ endif()
 find_package(Threads REQUIRED)
 find_package(OpenSSL REQUIRED)
 
+# Try to find jsoncpp
+find_package(PkgConfig QUIET)
+if(PkgConfig_FOUND)
+    pkg_check_modules(JSONCPP jsoncpp)
+endif()
+
 # Include directories
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/third_party)
 
-# Core Source files (only existing files)
+# Core Source files
 set(CORE_SOURCES
     src/core/TradingEngine.cpp
     src/core/ConfigManager.cpp
     src/core/OrderManager.cpp
+    src/core/RenkoChart.cpp
+    src/core/PatternDetector.cpp
+    src/core/RiskManager.cpp
+    src/core/Logger.cpp
+    src/core/DatabaseManager.cpp
 )
 
-# Add other core files if they exist
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/core/RenkoChart.cpp")
-    list(APPEND CORE_SOURCES src/core/RenkoChart.cpp)
-endif()
+# API Source files
+set(API_SOURCES
+    src/api/ExchangeAPI.cpp
+    src/api/BinanceAPI.cpp
+    src/api/ExchangeAPIFactory.cpp
+)
 
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/core/PatternDetector.cpp")
-    list(APPEND CORE_SOURCES src/core/PatternDetector.cpp)
-endif()
-
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/core/RiskManager.cpp")
-    list(APPEND CORE_SOURCES src/core/RiskManager.cpp)
-endif()
-
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/core/Logger.cpp")
-    list(APPEND CORE_SOURCES src/core/Logger.cpp)
-endif()
-
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/core/DatabaseManager.cpp")
-    list(APPEND CORE_SOURCES src/core/DatabaseManager.cpp)
-endif()
-
-# UI Sources (only existing files)
+# UI Source files
 set(UI_SOURCES
     src/ui/MainWindow.cpp
+    src/ui/RenkoChartWidget.cpp
+    src/ui/MarketDataWidget.cpp
 )
 
 # Add other UI files if they exist
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/ui/TradingDashboard.cpp")
     list(APPEND UI_SOURCES src/ui/TradingDashboard.cpp)
-endif()
-
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/ui/RenkoChartWidget.cpp")
-    list(APPEND UI_SOURCES src/ui/RenkoChartWidget.cpp)
 endif()
 
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/ui/OrderManagementWidget.cpp")
@@ -92,10 +87,6 @@ if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/ui/LogWidget.cpp")
     list(APPEND UI_SOURCES src/ui/LogWidget.cpp)
 endif()
 
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/ui/MarketDataWidget.cpp")
-    list(APPEND UI_SOURCES src/ui/MarketDataWidget.cpp)
-endif()
-
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/ui/PatternDetectionWidget.cpp")
     list(APPEND UI_SOURCES src/ui/PatternDetectionWidget.cpp)
 endif()
@@ -111,6 +102,7 @@ endif()
 # Create main core library
 add_library(MasterMindCore STATIC
     ${CORE_SOURCES}
+    ${API_SOURCES}
 )
 
 # Link core library dependencies
@@ -119,6 +111,15 @@ target_link_libraries(MasterMindCore
     OpenSSL::SSL
     OpenSSL::Crypto
 )
+
+# Link jsoncpp if available
+if(JSONCPP_FOUND)
+    target_link_libraries(MasterMindCore ${JSONCPP_LIBRARIES})
+    target_include_directories(MasterMindCore PRIVATE ${JSONCPP_INCLUDE_DIRS})
+    target_compile_options(MasterMindCore PRIVATE ${JSONCPP_CFLAGS_OTHER})
+else()
+    message(WARNING "jsoncpp not found. Some JSON functionality may not work correctly.")
+endif()
 
 # Create Qt UI library
 add_library(MasterMindUI STATIC
@@ -161,7 +162,7 @@ target_link_libraries(MasterMindTrader MasterMindCore)
 
 # Test executable
 add_executable(MasterMindTest
-    tests/test_renko.cpp
+    tests/test_system.cpp
 )
 
 target_link_libraries(MasterMindTest
@@ -169,6 +170,18 @@ target_link_libraries(MasterMindTest
     Qt6::Test
     Qt6::Core
 )
+
+# Additional test executables
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_renko.cpp")
+    add_executable(MasterMindRenkoTest
+        tests/test_renko.cpp
+    )
+    target_link_libraries(MasterMindRenkoTest
+        MasterMindCore
+        Qt6::Test
+        Qt6::Core
+    )
+endif()
 
 # Qt deployment for Windows
 if(WIN32)
@@ -181,7 +194,46 @@ if(WIN32)
     endif()
 endif()
 
+# Enable testing
+enable_testing()
+add_test(NAME SystemTest COMMAND MasterMindTest)
+
+if(TARGET MasterMindRenkoTest)
+    add_test(NAME RenkoTest COMMAND MasterMindRenkoTest)
+endif()
+
 # Installation
 install(TARGETS MasterMindTraderGUI MasterMindTrader MasterMindTest DESTINATION bin)
 install(DIRECTORY config/ DESTINATION config)
-install(FILES README.md DESTINATION .) 
+install(FILES README.md DESTINATION .)
+
+# Create test configuration file if it doesn't exist
+if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/config/test_config.json")
+    configure_file(
+        "${CMAKE_CURRENT_SOURCE_DIR}/config/mastermind_config.json"
+        "${CMAKE_CURRENT_SOURCE_DIR}/config/test_config.json"
+        COPYONLY
+    )
+endif()
+
+# Print configuration summary
+message(STATUS "")
+message(STATUS "Master Mind Trading System Configuration Summary:")
+message(STATUS "================================================")
+message(STATUS "Build Type: ${CMAKE_BUILD_TYPE}")
+message(STATUS "Qt Version: ${Qt6_VERSION}")
+message(STATUS "OpenSSL Found: ${OPENSSL_FOUND}")
+message(STATUS "JsonCpp Found: ${JSONCPP_FOUND}")
+message(STATUS "Core Sources: ${CORE_SOURCES}")
+message(STATUS "API Sources: ${API_SOURCES}")
+message(STATUS "UI Sources: ${UI_SOURCES}")
+message(STATUS "")
+
+# Warning for missing dependencies
+if(NOT OPENSSL_FOUND)
+    message(WARNING "OpenSSL not found. Exchange API authentication may not work.")
+endif()
+
+if(NOT Qt6_FOUND)
+    message(FATAL_ERROR "Qt6 not found. Please install Qt6 and set CMAKE_PREFIX_PATH correctly.")
+endif() 
