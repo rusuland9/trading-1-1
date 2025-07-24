@@ -1,0 +1,400 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Windows - 10.0.26100 - AMD64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      MSBuild version 17.14.14+a129329f1 for .NET Framework
+      Build started 7/23/2025 7:54:00 PM.
+      
+      Project "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\4.0.3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
+      PrepareForBuild:
+        Creating directory "Debug\\".
+        Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+        Creating directory "Debug\\CompilerIdCXX.tlog\\".
+      InitializeBuildStatus:
+        Creating "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+        Touching "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
+      ClCompile:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
+        CMakeCXXCompilerId.cpp
+      Link:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
+        CompilerIdCXX.vcxproj -> C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\4.0.3\\CompilerIdCXX\\CompilerIdCXX.exe
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_CXX_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        Deleting file "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
+        Touching "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate".
+      Done Building Project "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\4.0.3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (default targets).
+      
+      Build succeeded.
+          0 Warning(s)
+          0 Error(s)
+      
+      Time Elapsed 00:00:03.49
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+      
+      The CXX compiler identification is MSVC, found in:
+        C:/Python313/Doc/trading/build/CMakeFiles/4.0.3/CompilerIdCXX/CompilerIdCXX.exe
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "C:/Python313/Doc/trading/build/CMakeFiles/CMakeScratch/TryCompile-2yhg5e"
+      binary: "C:/Python313/Doc/trading/build/CMakeFiles/CMakeScratch/TryCompile-2yhg5e"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Python313/Doc/trading/build/CMakeFiles/CMakeScratch/TryCompile-2yhg5e'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_507b5.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.14.14+a129329f1 for .NET Framework
+        Build started 7/23/2025 7:54:04 PM.
+        
+        Project "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2yhg5e\\cmTC_507b5.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_507b5.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2yhg5e\\Debug\\".
+          Creating directory "cmTC_507b5.dir\\Debug\\cmTC_507b5.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_507b5.dir\\Debug\\cmTC_507b5.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_507b5.dir\\Debug\\cmTC_507b5.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_507b5.dir\\Debug\\\\" /Fd"cmTC_507b5.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCXXCompilerABI.cpp"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35213 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_507b5.dir\\Debug\\\\" /Fd"cmTC_507b5.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCXXCompilerABI.cpp"
+          CMakeCXXCompilerABI.cpp
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2yhg5e\\Debug\\cmTC_507b5.exe" /INCREMENTAL /ILK:"cmTC_507b5.dir\\Debug\\cmTC_507b5.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Python313/Doc/trading/build/CMakeFiles/CMakeScratch/TryCompile-2yhg5e/Debug/cmTC_507b5.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Python313/Doc/trading/build/CMakeFiles/CMakeScratch/TryCompile-2yhg5e/Debug/cmTC_507b5.lib" /MACHINE:X64  /machine:x64 cmTC_507b5.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_507b5.vcxproj -> C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2yhg5e\\Debug\\cmTC_507b5.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_507b5.dir\\Debug\\cmTC_507b5.tlog\\unsuccessfulbuild".
+          Touching "cmTC_507b5.dir\\Debug\\cmTC_507b5.tlog\\cmTC_507b5.lastbuildstate".
+        Done Building Project "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2yhg5e\\cmTC_507b5.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:01.69
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeDetermineCompilerABI.cmake:227 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        linker tool for 'CXX': C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/HostX64/x64/link.exe
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/Internal/CMakeDetermineLinkerId.cmake:36 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeDetermineCompilerABI.cmake:270 (cmake_determine_linker_id)"
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the CXX compiler's linker: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/HostX64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.44.35213.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/CheckCXXSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/FindThreads.cmake:99 (check_cxx_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeFindDependencyMacro.cmake:78 (find_package)"
+      - "C:/Qt/6.4.2/mingw_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:33 (find_dependency)"
+      - "C:/Qt/6.4.2/mingw_64/lib/cmake/Qt6/Qt6Dependencies.cmake:24 (_qt_internal_find_third_party_dependencies)"
+      - "C:/Qt/6.4.2/mingw_64/lib/cmake/Qt6/Qt6Config.cmake:112 (include)"
+      - "CMakeLists.txt:9 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "C:/Python313/Doc/trading/build/CMakeFiles/CMakeScratch/TryCompile-ztv5dq"
+      binary: "C:/Python313/Doc/trading/build/CMakeFiles/CMakeScratch/TryCompile-ztv5dq"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Qt/6.4.2/mingw_64/lib/cmake/Qt6;C:/Qt/6.4.2/mingw_64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/Qt/6.4.2/mingw_64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Python313/Doc/trading/build/CMakeFiles/CMakeScratch/TryCompile-ztv5dq'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_adc98.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.14.14+a129329f1 for .NET Framework
+        Build started 7/23/2025 7:54:07 PM.
+        
+        Project "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ztv5dq\\cmTC_adc98.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_adc98.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ztv5dq\\Debug\\".
+          Creating directory "cmTC_adc98.dir\\Debug\\cmTC_adc98.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_adc98.dir\\Debug\\cmTC_adc98.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_adc98.dir\\Debug\\cmTC_adc98.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /std:c++17 /Fo"cmTC_adc98.dir\\Debug\\\\" /Fd"cmTC_adc98.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ztv5dq\\src.cxx"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35213 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /std:c++17 /Fo"cmTC_adc98.dir\\Debug\\\\" /Fd"cmTC_adc98.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ztv5dq\\src.cxx"
+          src.cxx
+        C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ztv5dq\\src.cxx(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ztv5dq\\cmTC_adc98.vcxproj]
+        Done Building Project "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ztv5dq\\cmTC_adc98.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ztv5dq\\cmTC_adc98.vcxproj" (default target) (1) ->
+        (ClCompile target) -> 
+          C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ztv5dq\\src.cxx(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ztv5dq\\cmTC_adc98.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:01.60
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/CheckLibraryExists.cmake:112 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/FindThreads.cmake:112 (check_library_exists)"
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/FindThreads.cmake:175 (_threads_check_lib)"
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeFindDependencyMacro.cmake:78 (find_package)"
+      - "C:/Qt/6.4.2/mingw_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:33 (find_dependency)"
+      - "C:/Qt/6.4.2/mingw_64/lib/cmake/Qt6/Qt6Dependencies.cmake:24 (_qt_internal_find_third_party_dependencies)"
+      - "C:/Qt/6.4.2/mingw_64/lib/cmake/Qt6/Qt6Config.cmake:112 (include)"
+      - "CMakeLists.txt:9 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthreads"
+    directories:
+      source: "C:/Python313/Doc/trading/build/CMakeFiles/CMakeScratch/TryCompile-e2pfg5"
+      binary: "C:/Python313/Doc/trading/build/CMakeFiles/CMakeScratch/TryCompile-e2pfg5"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Qt/6.4.2/mingw_64/lib/cmake/Qt6;C:/Qt/6.4.2/mingw_64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/Qt/6.4.2/mingw_64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREADS_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Python313/Doc/trading/build/CMakeFiles/CMakeScratch/TryCompile-e2pfg5'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_ecc68.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.14.14+a129329f1 for .NET Framework
+        Build started 7/23/2025 7:54:09 PM.
+        
+        Project "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-e2pfg5\\cmTC_ecc68.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_ecc68.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-e2pfg5\\Debug\\".
+          Creating directory "cmTC_ecc68.dir\\Debug\\cmTC_ecc68.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_ecc68.dir\\Debug\\cmTC_ecc68.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_ecc68.dir\\Debug\\cmTC_ecc68.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /std:c++17 /Fo"cmTC_ecc68.dir\\Debug\\\\" /Fd"cmTC_ecc68.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-e2pfg5\\CheckFunctionExists.cxx"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35213 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /std:c++17 /Fo"cmTC_ecc68.dir\\Debug\\\\" /Fd"cmTC_ecc68.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-e2pfg5\\CheckFunctionExists.cxx"
+          CheckFunctionExists.cxx
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-e2pfg5\\Debug\\cmTC_ecc68.exe" /INCREMENTAL /ILK:"cmTC_ecc68.dir\\Debug\\cmTC_ecc68.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Python313/Doc/trading/build/CMakeFiles/CMakeScratch/TryCompile-e2pfg5/Debug/cmTC_ecc68.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Python313/Doc/trading/build/CMakeFiles/CMakeScratch/TryCompile-e2pfg5/Debug/cmTC_ecc68.lib" /MACHINE:X64  /machine:x64 cmTC_ecc68.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-e2pfg5\\cmTC_ecc68.vcxproj]
+        Done Building Project "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-e2pfg5\\cmTC_ecc68.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-e2pfg5\\cmTC_ecc68.vcxproj" (default target) (1) ->
+        (Link target) -> 
+          LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-e2pfg5\\cmTC_ecc68.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:01.34
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/CheckLibraryExists.cmake:112 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/FindThreads.cmake:112 (check_library_exists)"
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/FindThreads.cmake:176 (_threads_check_lib)"
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeFindDependencyMacro.cmake:78 (find_package)"
+      - "C:/Qt/6.4.2/mingw_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:33 (find_dependency)"
+      - "C:/Qt/6.4.2/mingw_64/lib/cmake/Qt6/Qt6Dependencies.cmake:24 (_qt_internal_find_third_party_dependencies)"
+      - "C:/Qt/6.4.2/mingw_64/lib/cmake/Qt6/Qt6Config.cmake:112 (include)"
+      - "CMakeLists.txt:9 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthread"
+    directories:
+      source: "C:/Python313/Doc/trading/build/CMakeFiles/CMakeScratch/TryCompile-1qy7oo"
+      binary: "C:/Python313/Doc/trading/build/CMakeFiles/CMakeScratch/TryCompile-1qy7oo"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Qt/6.4.2/mingw_64/lib/cmake/Qt6;C:/Qt/6.4.2/mingw_64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/Qt/6.4.2/mingw_64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREAD_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Python313/Doc/trading/build/CMakeFiles/CMakeScratch/TryCompile-1qy7oo'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_57083.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.14.14+a129329f1 for .NET Framework
+        Build started 7/23/2025 7:54:11 PM.
+        
+        Project "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1qy7oo\\cmTC_57083.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_57083.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1qy7oo\\Debug\\".
+          Creating directory "cmTC_57083.dir\\Debug\\cmTC_57083.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_57083.dir\\Debug\\cmTC_57083.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_57083.dir\\Debug\\cmTC_57083.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /std:c++17 /Fo"cmTC_57083.dir\\Debug\\\\" /Fd"cmTC_57083.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1qy7oo\\CheckFunctionExists.cxx"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35213 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /std:c++17 /Fo"cmTC_57083.dir\\Debug\\\\" /Fd"cmTC_57083.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1qy7oo\\CheckFunctionExists.cxx"
+          CheckFunctionExists.cxx
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1qy7oo\\Debug\\cmTC_57083.exe" /INCREMENTAL /ILK:"cmTC_57083.dir\\Debug\\cmTC_57083.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Python313/Doc/trading/build/CMakeFiles/CMakeScratch/TryCompile-1qy7oo/Debug/cmTC_57083.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Python313/Doc/trading/build/CMakeFiles/CMakeScratch/TryCompile-1qy7oo/Debug/cmTC_57083.lib" /MACHINE:X64  /machine:x64 cmTC_57083.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthread.lib' [C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1qy7oo\\cmTC_57083.vcxproj]
+        Done Building Project "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1qy7oo\\cmTC_57083.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1qy7oo\\cmTC_57083.vcxproj" (default target) (1) ->
+        (Link target) -> 
+          LINK : fatal error LNK1104: cannot open file 'pthread.lib' [C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1qy7oo\\cmTC_57083.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:01.57
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/CheckCXXSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "C:/Qt/6.4.2/mingw_64/lib/cmake/Qt6/FindWrapAtomic.cmake:33 (check_cxx_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-4.0/Modules/CMakeFindDependencyMacro.cmake:78 (find_package)"
+      - "C:/Qt/6.4.2/mingw_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:33 (find_dependency)"
+      - "C:/Qt/6.4.2/mingw_64/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake:30 (_qt_internal_find_third_party_dependencies)"
+      - "C:/Qt/6.4.2/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfig.cmake:40 (include)"
+      - "C:/Qt/6.4.2/mingw_64/lib/cmake/Qt6/Qt6Config.cmake:157 (find_package)"
+      - "CMakeLists.txt:9 (find_package)"
+    checks:
+      - "Performing Test HAVE_STDATOMIC"
+    directories:
+      source: "C:/Python313/Doc/trading/build/CMakeFiles/CMakeScratch/TryCompile-2plajb"
+      binary: "C:/Python313/Doc/trading/build/CMakeFiles/CMakeScratch/TryCompile-2plajb"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Qt/6.4.2/mingw_64/lib/cmake/Qt6;C:/Qt/6.4.2/mingw_64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/Qt/6.4.2/mingw_64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "HAVE_STDATOMIC"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Python313/Doc/trading/build/CMakeFiles/CMakeScratch/TryCompile-2plajb'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_4da89.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.14.14+a129329f1 for .NET Framework
+        Build started 7/23/2025 7:54:13 PM.
+        
+        Project "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2plajb\\cmTC_4da89.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_4da89.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2plajb\\Debug\\".
+          Creating directory "cmTC_4da89.dir\\Debug\\cmTC_4da89.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_4da89.dir\\Debug\\cmTC_4da89.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_4da89.dir\\Debug\\cmTC_4da89.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D HAVE_STDATOMIC /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /std:c++17 /Fo"cmTC_4da89.dir\\Debug\\\\" /Fd"cmTC_4da89.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2plajb\\src.cxx"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35213 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D HAVE_STDATOMIC /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /std:c++17 /Fo"cmTC_4da89.dir\\Debug\\\\" /Fd"cmTC_4da89.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2plajb\\src.cxx"
+          src.cxx
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2plajb\\Debug\\cmTC_4da89.exe" /INCREMENTAL /ILK:"cmTC_4da89.dir\\Debug\\cmTC_4da89.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Python313/Doc/trading/build/CMakeFiles/CMakeScratch/TryCompile-2plajb/Debug/cmTC_4da89.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Python313/Doc/trading/build/CMakeFiles/CMakeScratch/TryCompile-2plajb/Debug/cmTC_4da89.lib" /MACHINE:X64  /machine:x64 cmTC_4da89.dir\\Debug\\src.obj
+          cmTC_4da89.vcxproj -> C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2plajb\\Debug\\cmTC_4da89.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_4da89.dir\\Debug\\cmTC_4da89.tlog\\unsuccessfulbuild".
+          Touching "cmTC_4da89.dir\\Debug\\cmTC_4da89.tlog\\cmTC_4da89.lastbuildstate".
+        Done Building Project "C:\\Python313\\Doc\\trading\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2plajb\\cmTC_4da89.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:01.89
+        
+      exitCode: 0
+...

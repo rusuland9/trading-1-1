@@ -39,9 +39,9 @@ bool TradingEngine::initialize() {
     Logger::getInstance().info("Configuration loaded successfully", "Engine");
 
     // Initialize database manager
-    database_ = std::make_unique<DatabaseManager>();
+    databaseManager_ = std::make_unique<DatabaseManager>();
     auto dbConfig = configManager_->getDatabaseConfig();
-    if (!database_->initialize(dbConfig.connectionString)) {
+    if (!databaseManager_->initialize(dbConfig.connectionString)) {
         std::cerr << "Failed to initialize database" << std::endl;
         return false;
     }

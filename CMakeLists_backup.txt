@@ -1,0 +1,45 @@
+cmake_minimum_required(VERSION 3.16)
+project(MasterMindTradingSystem VERSION 1.0.0 LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Find required packages
+find_package(Threads REQUIRED)
+
+# Include directories
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+# Core Source files
+set(CORE_SOURCES
+    src/core/TradingEngine.cpp
+    src/core/ConfigManager.cpp
+    src/core/OrderManager.cpp
+    src/core/RenkoChart.cpp
+    src/core/PatternDetector.cpp
+    src/core/RiskManager.cpp
+    src/core/DatabaseManager.cpp
+    src/core/Logger.cpp
+)
+
+# Create core library
+add_library(MasterMindCore ${CORE_SOURCES})
+target_link_libraries(MasterMindCore Threads::Threads)
+
+# Console executable
+add_executable(MasterMindTrader
+    src/main.cpp
+)
+
+# Demo simulation executable
+add_executable(DemoSimulation
+    demo_simulation.cpp
+)
+
+target_link_libraries(MasterMindTrader MasterMindCore)
+target_link_libraries(DemoSimulation MasterMindCore)
+
+# Installation
+install(TARGETS MasterMindTrader DemoSimulation DESTINATION bin)
+install(DIRECTORY config/ DESTINATION config)
+install(FILES README.md DESTINATION .) 

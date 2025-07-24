@@ -1,0 +1,10 @@
+^C:\PYTHON313\DOC\TRADING\BUILD\CMAKEFILES\65984BD810FA43DA0D63DFC2FC4231AF\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Python313/Doc/trading -BC:/Python313/Doc/trading/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Python313/Doc/trading/build/MasterMindTradingSystem.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

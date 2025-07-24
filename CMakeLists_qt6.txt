@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Qt 6.4.2 Configuration (installed via Chocolatey)
 set(CMAKE_PREFIX_PATH "C:/Qt/6.4.2/mingw_64")
-find_package(Qt6 REQUIRED COMPONENTS Core Widgets Charts Network Sql Test)
+find_package(Qt6 REQUIRED COMPONENTS Core Widgets Charts Network WebSockets Sql Test)
 
 # Enable Qt MOC, UIC, and RCC
 set(CMAKE_AUTOMOC ON)
@@ -20,8 +20,6 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
     set(CMAKE_CXX_FLAGS_RELEASE "/O2 /DNDEBUG")
     set(CMAKE_CXX_FLAGS_DEBUG "/Zi /Od /DDEBUG")
-    # Required for Qt6 with MSVC
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Zc:__cplusplus /permissive-")
 endif()
 
 # Find required packages
@@ -54,12 +52,17 @@ set(CORE_SOURCES
 # UI Source files
 set(UI_SOURCES
     src/ui/MainWindow.cpp
-    src/ui/MainWindow_Part2.cpp
+    src/ui/TradingDashboard.cpp
     src/ui/RenkoChartWidget.cpp
     src/ui/MarketDataWidget.cpp
     src/ui/OrderManagementWidget.cpp
     src/ui/RiskManagementWidget.cpp
     src/ui/PositionWidget.cpp
+    src/ui/LogWidget.cpp
+    src/ui/PatternDetectionWidget.cpp
+    src/ui/PerformanceWidget.cpp
+    src/ui/ExchangeStatusWidget.cpp
+    src/ui/ConfigurationWidget.cpp
 )
 
 # Create core library
@@ -97,6 +100,7 @@ target_link_libraries(MasterMindTraderGUI
     Qt6::Widgets
     Qt6::Charts
     Qt6::Network
+    Qt6::WebSockets
     Qt6::Sql
 )
 

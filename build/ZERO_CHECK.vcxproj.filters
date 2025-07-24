@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Python313\Doc\trading\build\CMakeFiles\65984bd810fa43da0d63dfc2fc4231af\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{A5B5031E-F9B5-3502-9D20-1E901048858A}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

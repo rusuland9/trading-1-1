@@ -1,0 +1,10 @@
+^C:\PYTHON313\DOC\TRADING\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Python313/Doc/trading -BC:/Python313/Doc/trading/build --check-stamp-file C:/Python313/Doc/trading/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

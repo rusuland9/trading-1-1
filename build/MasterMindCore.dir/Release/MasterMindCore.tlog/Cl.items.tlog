@@ -1,0 +1,9 @@
+C:\Python313\Doc\trading\src\core\TradingEngine.cpp;C:\Python313\Doc\trading\build\MasterMindCore.dir\Release\TradingEngine.obj
+C:\Python313\Doc\trading\src\core\ConfigManager.cpp;C:\Python313\Doc\trading\build\MasterMindCore.dir\Release\ConfigManager.obj
+C:\Python313\Doc\trading\src\core\OrderManager.cpp;C:\Python313\Doc\trading\build\MasterMindCore.dir\Release\OrderManager.obj
+C:\Python313\Doc\trading\src\core\RenkoChart.cpp;C:\Python313\Doc\trading\build\MasterMindCore.dir\Release\RenkoChart.obj
+C:\Python313\Doc\trading\src\core\PatternDetector.cpp;C:\Python313\Doc\trading\build\MasterMindCore.dir\Release\PatternDetector.obj
+C:\Python313\Doc\trading\src\core\RiskManager.cpp;C:\Python313\Doc\trading\build\MasterMindCore.dir\Release\RiskManager.obj
+C:\Python313\Doc\trading\src\core\DatabaseManager.cpp;C:\Python313\Doc\trading\build\MasterMindCore.dir\Release\DatabaseManager.obj
+C:\Python313\Doc\trading\src\core\Logger.cpp;C:\Python313\Doc\trading\build\MasterMindCore.dir\Release\Logger.obj
+C:\Python313\Doc\trading\build\MasterMindCore_autogen\mocs_compilation_Release.cpp;C:\Python313\Doc\trading\build\MasterMindCore.dir\Release\mocs_compilation_Release.obj

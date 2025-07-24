@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Mind Trading System - Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e1e2e 0%, #2d2d3a 100%);
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(90deg, #00d4ff 0%, #0099cc 100%);
+            color: #000;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.8;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .panel {
+            background: rgba(45, 45, 58, 0.9);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #4d4d5a;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .panel:hover {
+            transform: translateY(-5px);
+        }
+
+        .panel h2 {
+            color: #00d4ff;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            border-bottom: 2px solid #00d4ff;
+            padding-bottom: 5px;
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .status-item {
+            background: rgba(30, 30, 46, 0.8);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #3d3d4a;
+        }
+
+        .status-active {
+            background: linear-gradient(135deg, #00ff88, #00e676);
+            color: #000;
+        }
+
+        .status-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .status-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        .pattern-detected {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: #000;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 5px 0;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        .trading-signal {
+            background: rgba(255, 183, 0, 0.2);
+            border: 1px solid #ffb800;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 8px 0;
+        }
+
+        .signal-entry {
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        .signal-stop {
+            color: #ff4757;
+            font-weight: bold;
+        }
+
+        .signal-target {
+            color: #00d4ff;
+            font-weight: bold;
+        }
+
+        .metric-large {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #00ff88;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .progress-bar {
+            background: rgba(30, 30, 46, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #00d4ff, #00ff88);
+            height: 20px;
+            width: 364%;
+            max-width: 100%;
+            transition: width 2s ease;
+        }
+
+        .real-time-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #00ff88;
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            animation: blink 1s infinite;
+            box-shadow: 0 4px 15px rgba(0, 255, 136, 0.5);
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.7; }
+        }
+
+        .chart-container {
+            background: rgba(30, 30, 46, 0.8);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            border: 1px solid #3d3d4a;
+        }
+
+        .brick {
+            display: inline-block;
+            width: 20px;
+            height: 30px;
+            margin: 2px;
+            border-radius: 3px;
+        }
+
+        .brick-up {
+            background: linear-gradient(135deg, #00ff88, #00e676);
+        }
+
+        .brick-down {
+            background: linear-gradient(135deg, #ff4757, #ff3742);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #808080;
+            border-top: 1px solid #3d3d4a;
+            margin-top: 40px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="real-time-indicator">● LIVE SYSTEM</div>
+    
+    <div class="header">
+        <h1>🎯 MASTER MIND TRADING SYSTEM</h1>
+        <div class="subtitle">High-Frequency Cross-Asset Renko-Based Strategy | PAPER TRADING MODE</div>
+    </div>
+
+    <div class="container">
+        <!-- System Status Panel -->
+        <div class="panel">
+            <h2>🟢 System Status</h2>
+            <div class="status-grid">
+                <div class="status-item status-active">
+                    <div class="status-value">ACTIVE</div>
+                    <div class="status-label">Trading Engine</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-value">NORMAL</div>
+                    <div class="status-label">Risk Status</div>
+                </div>
+                <div class="status-item status-active">
+                    <div class="status-value">PAPER</div>
+                    <div class="status-label">Trading Mode</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-value">0.0%</div>
+                    <div class="status-label">Drawdown</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pattern Detection Panel -->
+        <div class="panel">
+            <h2>🔍 Pattern Detection</h2>
+            <div class="metric-large">51</div>
+            <div style="text-align: center; margin-bottom: 15px;">Patterns Detected</div>
+            
+            <div class="pattern-detected">
+                🔍 SETUP 1: Two Down + Up Pattern
+            </div>
+            <div class="pattern-detected">
+                🔍 SETUP 2: Green-Red-Green Pattern
+            </div>
+            
+            <div style="margin-top: 15px;">
+                <div><strong>Detection Rate:</strong> 364.3%</div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trading Signals Panel -->
+        <div class="panel">
+            <h2>📈 Trading Signals</h2>
+            <div class="metric-large">51</div>
+            <div style="text-align: center; margin-bottom: 15px;">Signals Generated</div>
+            
+            <div class="trading-signal">
+                <div><strong>Latest Signal: EURUSD</strong></div>
+                <div>Entry: <span class="signal-entry">1.09826</span></div>
+                <div>Stop: <span class="signal-stop">1.09606</span></div>
+                <div>Target: <span class="signal-target">1.10206</span></div>
+            </div>
+            
+            <div class="trading-signal">
+                <div><strong>Risk/Reward:</strong> 2:1 Ratio</div>
+                <div><strong>Position Size:</strong> 0.02 lots</div>
+                <div><strong>Risk per Trade:</strong> $200 (2%)</div>
+            </div>
+        </div>
+
+        <!-- Market Data Panel -->
+        <div class="panel">
+            <h2>📊 Market Data</h2>
+            <div class="status-grid">
+                <div class="status-item">
+                    <div class="status-value">1.09806</div>
+                    <div class="status-label">EURUSD</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-value">45,000</div>
+                    <div class="status-label">BTCUSD</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-value">3,000</div>
+                    <div class="status-label">ETHUSD</div>
+                </div>
+                <div class="status-item status-active">
+                    <div class="status-value">500</div>
+                    <div class="status-label">Ticks Processed</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Renko Chart Panel -->
+        <div class="panel">
+            <h2>📈 Renko Chart</h2>
+            <div><strong>EURUSD - 10 Pip Bricks</strong></div>
+            <div class="chart-container">
+                <div class="brick brick-up"></div>
+                <div class="brick brick-down"></div>
+                <div class="brick brick-down"></div>
+                <div class="brick brick-up"></div>
+                <div class="brick brick-up"></div>
+                <div class="brick brick-up"></div>
+                <div class="brick brick-down"></div>
+                <div class="brick brick-down"></div>
+                <div class="brick brick-down"></div>
+                <div class="brick brick-up"></div>
+                <div class="brick brick-down"></div>
+                <div class="brick brick-down"></div>
+                <div class="brick brick-down"></div>
+                <div class="brick brick-up"></div>
+            </div>
+            <div style="margin-top: 10px;">
+                <div><strong>Total Bricks:</strong> 14</div>
+                <div><strong>Brick Size:</strong> 0.0010 (10 pips)</div>
+            </div>
+        </div>
+
+        <!-- Performance Panel -->
+        <div class="panel">
+            <h2>💰 Performance</h2>
+            <div class="status-grid">
+                <div class="status-item status-active">
+                    <div class="status-value">$10,000</div>
+                    <div class="status-label">Account Equity</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-value">$7,500</div>
+                    <div class="status-label">Allocated Capital</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-value">2%</div>
+                    <div class="status-label">Daily Risk</div>
+                </div>
+                <div class="status-item status-active">
+                    <div class="status-value">51</div>
+                    <div class="status-label">Potential Trades</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Configuration Summary -->
+        <div class="panel full-width">
+            <h2>⚙️ Active Configuration</h2>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+                <div>
+                    <h3 style="color: #00d4ff; margin-bottom: 10px;">Symbols</h3>
+                    <div>• EURUSD ($2,000)</div>
+                    <div>• BTCUSD ($3,000)</div>
+                    <div>• ETHUSD ($2,500)</div>
+                </div>
+                <div>
+                    <h3 style="color: #00d4ff; margin-bottom: 10px;">Risk Management</h3>
+                    <div>• Daily Risk: 2%</div>
+                    <div>• Max Drawdown: 5%</div>
+                    <div>• Counter System: 10 orders</div>
+                </div>
+                <div>
+                    <h3 style="color: #00d4ff; margin-bottom: 10px;">Pattern Detection</h3>
+                    <div>• Setup 1: Enabled ✓</div>
+                    <div>• Setup 2: Enabled ✓</div>
+                    <div>• Confidence: 70%</div>
+                </div>
+                <div>
+                    <h3 style="color: #00d4ff; margin-bottom: 10px;">System</h3>
+                    <div>• Paper Mode: Active ✓</div>
+                    <div>• Max Threads: 8</div>
+                    <div>• Auto Start: Disabled</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Master Mind Trading System v1.0.0 | High-Performance Cross-Asset Trading Platform</p>
+        <p style="color: #ff4757; font-weight: bold;">⚠️ CONFIDENTIAL STRATEGY - AUTHORIZED USE ONLY ⚠️</p>
+    </div>
+
+    <script>
+        // Simulate real-time updates
+        setInterval(() => {
+            const indicators = document.querySelectorAll('.real-time-indicator');
+            indicators.forEach(indicator => {
+                indicator.style.opacity = indicator.style.opacity === '0.7' ? '1' : '0.7';
+            });
+        }, 1000);
+
+        // Simulate pattern detection alerts
+        let patternCount = 51;
+        setInterval(() => {
+            if (Math.random() > 0.8) {
+                patternCount++;
+                document.querySelector('.metric-large').textContent = patternCount;
+                
+                // Flash the pattern detection panel
+                const panel = document.querySelector('.panel:nth-child(2)');
+                panel.style.borderColor = '#00ff88';
+                setTimeout(() => {
+                    panel.style.borderColor = '#4d4d5a';
+                }, 1000);
+            }
+        }, 3000);
+
+        // Display current time
+        setInterval(() => {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString();
+            document.title = `Master Mind Trading System - ${timeStr}`;
+        }, 1000);
+    </script>
+</body>
+</html> 

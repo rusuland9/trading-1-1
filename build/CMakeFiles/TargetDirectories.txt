@@ -1,0 +1,7 @@
+C:/Python313/Doc/trading/build/CMakeFiles/MasterMindCore.dir
+C:/Python313/Doc/trading/build/CMakeFiles/MasterMindTrader.dir
+C:/Python313/Doc/trading/build/CMakeFiles/MasterMindTraderGUI.dir
+C:/Python313/Doc/trading/build/CMakeFiles/DemoSimulation.dir
+C:/Python313/Doc/trading/build/CMakeFiles/INSTALL.dir
+C:/Python313/Doc/trading/build/CMakeFiles/ALL_BUILD.dir
+C:/Python313/Doc/trading/build/CMakeFiles/ZERO_CHECK.dir

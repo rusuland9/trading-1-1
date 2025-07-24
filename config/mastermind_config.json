@@ -6,7 +6,7 @@
     "heartbeatInterval": 30,
     "reconnectInterval": 60,
     "maxReconnectAttempts": 5,
-    "enableWebInterface": false,
+    "enableWebInterface": true,
     "webPort": 8080
   },
   "globalRiskParameters": {
@@ -93,7 +93,7 @@
   "exchanges": [
     {
       "exchange": "BINANCE",
-      "enabled": false,
+      "enabled": true,
       "testnet": true,
       "apiKey": "your_binance_api_key_here",
       "apiSecret": "your_binance_api_secret_here",
@@ -142,14 +142,14 @@
     }
   ],
   "logging": {
-    "logLevel": "INFO",
+    "logLevel": "DEBUG",
     "logFile": "logs/mastermind.log",
     "enableConsoleLog": true,
     "enableFileLog": true,
     "enableAuditTrail": true,
     "maxLogFileSize": 100,
     "maxLogFiles": 10,
-    "logMarketData": false,
+    "logMarketData": true,
     "logOrderDetails": true,
     "logRiskEvents": true
   },
